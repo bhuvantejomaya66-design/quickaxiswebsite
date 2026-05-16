@@ -64,11 +64,12 @@ export async function deductBalance(userId, roundId, amount, currency) {
   return data;
 }
 
-export async function insertBet(userId, roundId, amount, currency, autoCashout) {
+export async function insertBet(userId, gameId, roundId, amount, currency, autoCashout) {
   const { data, error } = await supabase
     .from('bets')
     .insert({
       user_id: userId,
+      game_id: gameId,
       round_id: roundId,
       amount,
       currency,

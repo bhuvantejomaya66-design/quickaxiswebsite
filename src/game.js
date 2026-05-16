@@ -143,7 +143,7 @@ export class CrashGame {
     }
 
     await deductBalance(userId, this.roundId, amount, currency);
-    const bet = await insertBet(userId, this.roundId, amount, currency, autoCashout);
+    const bet = await insertBet(userId, this.gameId, this.roundId, amount, currency, autoCashout);
 
     this.bets.set(userId, { betId: bet.id, amount, currency, autoCashout: autoCashout ?? null, cashedOut: false });
     this.broadcast({ type: 'bet_placed', amount, currency });
